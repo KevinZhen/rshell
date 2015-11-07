@@ -1,0 +1,24 @@
+Script started on Fri 06 Nov 2015 08:22:45 PM PST
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ exit
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ ls && exit
+bin  cc	 ex  LICENSE  makefile	mc  README.md  README.MD  sm  src  tests
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ ps || exit && ls && exit
+  PID TTY	   TIME CMD
+22112 pts/14   00:00:00 bash
+22162 pts/14   00:00:00 rshell
+22207 pts/14   00:00:00 ps
+bin  cc	 ex  LICENSE  makefile	mc  README.md  README.MD  sm  src  tests
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ # exit
+kzhen002@hammer.cs.ucr.edu$ exit #
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ pwd ; ls ; exit
+/class/classes/kzhen002/rshell
+bin  cc	 ex  LICENSE  makefile	mc  README.md  README.MD  sm  src  tests
+[kzhen002@hammer rshell]$ exit
+exit
+
+Script done on Fri 06 Nov 2015 08:24:38 PM PST

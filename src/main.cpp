@@ -47,11 +47,22 @@ vector<command> ParseTokens(vector<string> ParsedCmd) {
 	string C_SEMI = ";";
 	vector<command> ret;
 	int count = 0;
-	string tmp[] = { "&&", "||",  ";", "#"};
+	string tmp[] = { "&&", "||",  ";"};
 	set<string> connectors(tmp, tmp + sizeof(tmp) / sizeof(tmp[0]));
 	vector<char *> temp;
 	for(unsigned i = 0; i < ParsedCmd.size(); ++i) {
-		if(connectors.find(ParsedCmd.at(i)) != connectors.end() ) {
+		if(ParsedCmd.at(i) == C_COM) {
+			if(!temp.empty()) {
+				ret.push_back(command());
+				temp.push_back(0);
+				ret.at(count).args=temp;
+				ret.at(count).IS_SUCCESS = false;
+				ret.at(count).EXEC_NEXT = false;
+				ret.at(count).connector = C_COM;		
+			}
+			return ret;
+		}
+		else if(connectors.find(ParsedCmd.at(i)) != connectors.end() ) {
 			if(temp.empty()) {
 				//first token is a connector, return an error
 				ret.clear();
@@ -70,9 +81,11 @@ vector<command> ParseTokens(vector<string> ParsedCmd) {
 			else if(ParsedCmd.at(i) == C_OR) {
 				ret.at(count).connector = C_OR;
 			}
+			/*
 			else if(ParsedCmd.at(i) == C_COM) {
 				ret.at(count).connector = C_COM;
 			}
+			*/
 			else if(ParsedCmd.at(i) == C_SEMI) {
 				ret.at(count).connector = C_SEMI;
 			}
@@ -120,12 +133,14 @@ int main( int argc, char *argv[] ) {
 		trim_if(CommandLine, is_any_of("\t "));
 		split(ParsedCommands, CommandLine, is_any_of("\t "), token_compress_on);
 		cmdlist = ParseTokens(ParsedCommands);
-		if(cmdlist.at(0).args.empty()) {
+		if(cmdlist.empty()) {
+			//cout << "Commented\n";
+		}	
+		else if(cmdlist.at(0).args.empty() || (iequals(cmdlist.back().connector,"||") || 
+				iequals(cmdlist.back().connector,"&&") )) {
 			cout << "Syntax Error near unexpected token " 
 					<< cmdlist.at(0).connector << endl;
-		}
-		else {
-			cout << cmdlist.at(0).args[0] << endl;
+			cmdlist.clear();
 		}
 		for(unsigned i = 0; i < cmdlist.size(); ++i) {
 			if(i==0 || cmdlist.at(i-1).EXEC_NEXT) {
@@ -141,6 +156,7 @@ int main( int argc, char *argv[] ) {
 				else if(c_pid == 0) {
 					execvp(cmdlist.at(i).args[0], cmdlist.at(i).args.data());
 					perror("Execvp Failed");
+					exit(1);
 				}
 				else if(c_pid > 0) {
 					if( (pid=wait(&status)) < 0) {

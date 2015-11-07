@@ -1,0 +1,51 @@
+Script started on Fri 06 Nov 2015 08:02:15 PM PST
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ ls
+bin  LICENSE  makefile	README.md  README.MD  sm  src  tests
+kzhen002@hammer.cs.ucr.edu$ pwd
+/class/classes/kzhen002/rshell
+kzhen002@hammer.cs.ucr.edu$ ls -a
+.  ..  bin  .git  LICENSE  makefile  README.md	README.MD  sm  src  tests
+kzhen002@hammer.cs.ucr.edu$ echo "hi"
+"hi"
+kzhen002@hammer.cs.ucr.edu$ mkdir test.
+kzhen002@hammer.cs.ucr.edu$ ls
+bin  LICENSE  makefile	README.md  README.MD  sm  src  test  tests
+kzhen002@hammer.cs.ucr.edu$ rmdir test
+kzhen002@hammer.cs.ucr.edu$ ps
+  PID TTY	   TIME CMD
+18979 pts/5    00:00:00 bash
+18997 pts/5    00:00:00 rshell
+19307 pts/5    00:00:00 ps
+kzhen002@hammer.cs.ucr.edu$ cat README.MD
+
+Purpose
+====
+rshell is a simple command shell created for my CS100 class at UCR.
+
+How to install
+====
+```
+$ git clone https://github.com/kevinzhen/rshell.git
+$ cd rshell
+$ make
+$ bin/rshell
+```
+Limits/Bugs/Comments
+====
+1. Connectors must be space seperated between commands
+
+For Example
+```
+ls || echo ; ls && pwd # stuff
+```
+2. Input commands with trailing || or && are treated as syntax errors
+```
+ls ||
+ls &&
+```
+kzhen002@hammer.cs.ucr.edu$ exit
+[kzhen002@hammer rshell]$ exit
+exit
+
+Script done on Fri 06 Nov 2015 08:05:36 PM PST
