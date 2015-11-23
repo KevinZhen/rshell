@@ -1,0 +1,28 @@
+Script started on Sun 22 Nov 2015 11:13:18 PM PST
+[kzhen002@hammer tests]$ cd /class/classes/kzhen002/rshell
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ test -e /class/classes/kzhen002/rshell && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ test -f /class/classes/kzhen002/rshell && echo false
+kzhen002@hammer.cs.ucr.edu$ test -d /class/classes/kzhen002/rshell && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ test -f /class/classes/kzhen002/rshell/makefile && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ test -e /class || echo false
+kzhen002@hammer.cs.ucr.edu$ echo true && test -f /class/classes/kzhen002/rshell/makefile
+true
+kzhen002@hammer.cs.ucr.edu$ [ -e /class/classes/kzhen002/rshellc] && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ [ -f /class/classes/kzhen002/rshell/makefile ] && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ [ -d /class/classes/kzhen002/rshell/] && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ [ /class/classes/kzhen002 ] && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ test /class/classes/kzhen002/rshell/makefile && echo true
+true
+kzhen002@hammer.cs.ucr.edu$ exit
+[kzhen002@hammer rshell]$ exit
+exit
+
+Script done on Sun 22 Nov 2015 11:18:41 PM PST

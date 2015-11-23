@@ -1,0 +1,12 @@
+Script started on Sun 22 Nov 2015 11:21:15 PM PST
+[kzhen002@hammer tests]$ cd /class/classes/kzhen002/rshell
+[kzhen002@hammer rshell]$ bin/rshell
+kzhen002@hammer.cs.ucr.edu$ (ls || ls) && ls )
+Syntax Error. Missing closing Parentheses or braces
+kzhen002@hammer.cs.ucr.edu$ (l(pwd &&)echolp)[|| ls
+Syntax Error. Missing closing Parentheses or braces
+kzhen002@hammer.cs.ucr.edu$ exit
+[kzhen002@hammer rshell]$ exit
+exit
+
+Script done on Sun 22 Nov 2015 11:22:31 PM PST
